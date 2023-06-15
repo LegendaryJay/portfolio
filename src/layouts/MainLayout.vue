@@ -1,116 +1,165 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
+  <div class="page-container">
+    <img
+      id="background-component"
+      :src="getImageUrl('abstract-background.png')"
+    />
+    <q-layout view="hHh lpR fFf" ref="layout">
+      <q-btn
+        class="floating-button"
+        size="sm"
+        round
+        outline
+        @click="miniHideValue = !miniHideValue"
+      >
+        <HamburgerMenu
+          :is-open="!miniHideValue"
+          :size="16"
+          :transitionTime="0.1"
+          :thickness="1"
         />
+      </q-btn>
+      <q-drawer
+        :ref="checkMobile"
+        v-model="showMode"
+        show-if-above
+        :mini="miniHideValue"
+        :width="200"
+        :breakpoint="500"
+        bordered
+      >
+        <div class="spacer"></div>
+        <q-list padding>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section> Home </q-item-section>
+          </q-item>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+          <q-item active clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="info" />
+            </q-item-section>
+            <q-item-section> About </q-item-section>
+          </q-item>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="work" />
+            </q-item-section>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+            <q-item-section> Portfolio </q-item-section>
+          </q-item>
+        </q-list>
+      </q-drawer>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+      <!-- <q-footer  elevated class=" bg-grey-8 text-white">
+        <q-toolbar>
+          <q-toolbar-title>
+            <q-avatar>
+              <img
+                src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
+              />
+            </q-avatar>
+            <div>Title</div>
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-footer> -->
+    </q-layout>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
+<script>
+import { ref, computed } from 'vue';
+import HamburgerMenu from 'src/components/HamburgerMenu.vue';
+import { useQuasar } from 'quasar';
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
-
-export default defineComponent({
-  name: 'MainLayout',
-
+export default {
   components: {
-    EssentialLink
+    HamburgerMenu,
   },
+  name: 'MyComponent',
+  setup() {
+    const $q = useQuasar();
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+    const getImageUrl = (name) => {
+      return new URL(`../assets/${name}`, import.meta.url).href;
+    };
+
+    let isMobile = ref(false);
+    const miniHideValue = ref(true);
+
+    const showMode = computed({
+      get: () => {
+        console.log(isMobile.value);
+        return !isMobile.value || !miniHideValue.value;
+      },
+      set: (val) => {
+        miniHideValue.value = !val;
+      },
+    });
+    $q.dark.set(true);
+
+    function checkMobile(el) {
+      isMobile.value = !!el.$el.querySelector('.q-drawer--mobile');
+    }
 
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-});
+      showMode,
+      miniHideValue,
+      getImageUrl,
+      checkMobile,
+      isMobile,
+    };
+  },
+};
 </script>
+
+<style lang="scss">
+.q-item.q-router-link--active,
+.q-item--active {
+  color: white;
+  background: rgba($accent, 0.2);
+  background-clip: border-box;
+}
+.q-item {
+  color: lighten($primary, 35%);
+}
+.spacer {
+  height: 5rem;
+}
+.page-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+#background-component {
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  padding: 0;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: contain;
+  z-index: -1;
+}
+.q-drawer {
+  backdrop-filter: blur(10px);
+  background-color: rgba($dark-page, 0.2);
+}
+.floating-button {
+  position: absolute;
+  backdrop-filter: blur(10px);
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+}
+</style>
