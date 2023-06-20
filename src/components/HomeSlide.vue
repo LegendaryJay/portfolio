@@ -21,6 +21,8 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
               flat
               fab-mini
               icon="fa-brands fa-linkedin"
+              href="https://www.linkedin.com/in/dan-chianese-244b16122/"
+              target="_blank"
             />
             <q-btn
               size="xs"
@@ -28,6 +30,8 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
               flat
               fab-mini
               icon="fa-brands fa-github"
+              href="https://github.com/LegendaryJay"
+              target="_blank"
             />
           </div>
           <text class="name-text"> Hi, I'm Dan! </text>
@@ -39,13 +43,12 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
             and user-friendly solutions!
           </text>
         </div>
-        <div class="text-center scroll-text">▼ <u>Please Scroll</u> ▼</div>
       </div>
     </q-card>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home-background {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
