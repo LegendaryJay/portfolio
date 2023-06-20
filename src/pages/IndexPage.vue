@@ -1,18 +1,11 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <home-slide></home-slide>
-  </q-page>
+  <q-scroll-area class="fit">
+    <home-slide />
+    <about-me-slide />
+  </q-scroll-area>
 </template>
 
-<script lang="ts">
+<script setup>
+import AboutMeSlide from 'src/components/AboutMeSlide.vue';
 import HomeSlide from 'src/components/HomeSlide.vue';
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'IndexPage',
-  components: { HomeSlide },
-  setup() {
-    console.log('test');
-  },
-});
 </script>

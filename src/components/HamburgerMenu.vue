@@ -92,13 +92,11 @@ export default {
           ? this.currentStep + 1
           : this.currentStep - 1;
         if (
-          (this.isOpen && this.currentStep == steps) ||
-          (!this.isOpen && this.currentStep == 1)
+          (this.isOpen && this.currentStep >= steps) ||
+          (!this.isOpen && this.currentStep <= 1)
         ) {
           clearInterval(timer);
-        } else if (this.currentStep < 1) {
-          this.currentStep = 1;
-          clearInterval(timer);
+          this.currentStep = Math.max(Math.min(this.currentStep, steps), 1);
         }
       }, stepDuration * 1000);
     },

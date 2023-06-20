@@ -1,29 +1,26 @@
 <template>
-  <div class="page-container">
-    <img
-      id="background-component"
-      :src="getImageUrl('abstract-background.png')"
-    />
+  <div
+    class="page-container"
+    :style="{ backgroundImage: `url(${backgroundUrl})` }"
+  >
     <q-layout view="hHh lpR fFf" ref="layout">
       <q-btn
         class="floating-button"
-        size="sm"
+        size="md"
         round
-        outline
-        @click="miniHideValue = !miniHideValue"
+        flat
+        @click="showMode = !showMode"
       >
         <HamburgerMenu
-          :is-open="!miniHideValue"
-          :size="16"
-          :transitionTime="0.1"
+          :is-open="showMode"
+          :size="20"
+          :transitionTime="0.2"
           :thickness="1"
         />
       </q-btn>
       <q-drawer
-        :ref="checkMobile"
         v-model="showMode"
-        show-if-above
-        :mini="miniHideValue"
+        overlay
         :width="200"
         :breakpoint="500"
         bordered
@@ -54,7 +51,7 @@
         </q-list>
       </q-drawer>
 
-      <q-page-container>
+      <q-page-container class="window-height">
         <router-view />
       </q-page-container>
 
@@ -75,8 +72,10 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import HamburgerMenu from 'src/components/HamburgerMenu.vue';
+import backgroundUrl from 'src/assets/abstract-background.png';
+
 import { useQuasar } from 'quasar';
 
 export default {
@@ -87,34 +86,31 @@ export default {
   setup() {
     const $q = useQuasar();
 
-    const getImageUrl = (name) => {
-      return new URL(`../assets/${name}`, import.meta.url).href;
-    };
+    //let isMobile = ref(false);
+    // const miniHideValue = ref(true);
 
-    let isMobile = ref(false);
-    const miniHideValue = ref(true);
-
-    const showMode = computed({
-      get: () => {
-        console.log(isMobile.value);
-        return !isMobile.value || !miniHideValue.value;
-      },
-      set: (val) => {
-        miniHideValue.value = !val;
-      },
-    });
+    // const showMode = computed({
+    //   get: () => {
+    //     console.log(isMobile.value);
+    //     return !isMobile.value || !miniHideValue.value;
+    //   },
+    //   set: (val) => {
+    //     miniHideValue.value = !val;
+    //   },
+    // });
+    const showMode = ref(false);
     $q.dark.set(true);
 
-    function checkMobile(el) {
-      isMobile.value = !!el.$el.querySelector('.q-drawer--mobile');
-    }
+    // function checkMobile(el) {
+    //   //isMobile.value = !!el.$el.querySelector('.q-drawer--mobile');
+    // }
 
     return {
       showMode,
-      miniHideValue,
-      getImageUrl,
-      checkMobile,
-      isMobile,
+      //miniHideValue,
+      //checkMobile,
+      //isMobile,
+      backgroundUrl,
     };
   },
 };
@@ -128,7 +124,7 @@ export default {
   background-clip: border-box;
 }
 .q-item {
-  color: lighten($primary, 35%);
+  color: $primary;
 }
 .spacer {
   height: 5rem;
@@ -137,19 +133,8 @@ export default {
   position: relative;
   height: 100vh;
   overflow: hidden;
-}
-#background-component {
-  position: absolute;
-  top: -9999px;
-  bottom: -9999px;
-  left: -9999px;
-  right: -9999px;
-  margin: auto;
-  padding: 0;
-  min-height: 100%;
-  min-width: 100%;
-  object-fit: contain;
-  z-index: -1;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .q-drawer {
   backdrop-filter: blur(10px);
