@@ -1,43 +1,40 @@
 <template>
-  <q-table
-    flat
-    hide-header
-    hide-bottom
-    dense
-    separator="none"
-    :rows="rows"
-    :rows-per-page-options="[rows.length]"
-    :grid-header="false"
-    class="skill-table"
-  >
-    <template v-slot:body-cell-1="props">
-      <q-td :props="props">
-        <q-tooltip
-          anchor="center right"
-          self="center start"
-          transition-show="fade"
-          transition-hide="fade"
-        >
-          {{ ratingToString(props.row[1]) }}
-        </q-tooltip>
-        <q-rating
-          v-model="props.row[1]"
-          max="5"
-          size="xs"
-          icon="fa-regular fa-circle"
-          icon-selected="fa-solid fa-circle"
-          icon-half="fa-regular fa-circle-dot"
-          color="primary"
-          readonly
-        >
-        </q-rating>
-      </q-td>
-    </template>
-  </q-table>
+  <div v-for="row in rows" :key="row">
+    <q-tooltip
+      anchor="center left"
+      self="center end"
+      transition-show="fade"
+      transition-hide="fade"
+    >
+      {{ skillToString(row[1]) }}
+    </q-tooltip>
+    <div class="row justify-between">
+      <div
+        :style="{
+          'font-size': textSize + 'px',
+        }"
+      >
+        {{ row[0] }}
+      </div>
+      <q-rating
+        v-model="tempData[row[0]]"
+        max="5"
+        :size="textSize + 'px'"
+        icon="fa-regular fa-circle"
+        icon-selected="fa-solid fa-circle"
+        icon-half="fa-regular fa-circle-dot"
+        color="primary"
+        readonly
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
+import { useQuasar } from 'quasar';
 import { skillLegend } from 'src/scripts/SkillLevels';
+import { computed } from 'vue';
+const $q = useQuasar();
 const tempData = {
   'HTML/CSS/JS': 4.5,
   Java: 4.5,
@@ -54,23 +51,20 @@ const tempData = {
   'WPF (XAML, C#)': 2,
   Firebase: 2,
 };
+const rows = Object.entries(tempData).reverse((a, b) => a[1] - b[1]);
 
-const ratingToString = (number) => {
-  const target = Math.floor(number);
-  const overTarget = number > target;
+const skillToString = (number) => {
+  const num = Math.floor(number);
 
-  const legendVal = skillLegend?.[target];
-
-  if (legendVal) {
-    return legendVal.name + (overTarget ? ' + ' : '');
-  }
-  return '';
+  return skillLegend[num]?.name + (number > num ? '+' : '');
 };
-const rows = Object.entries(tempData);
+
+const textSize = computed(() => {
+  let calculation = 5 + $q.screen.width * 0.01;
+  const minPixels = 12;
+  const maxPixels = 16;
+  return Math.max(Math.min(maxPixels, calculation), minPixels);
+});
 </script>
 
-<style lang="scss" scoped>
-.skill-table {
-  border-radius: 10px;
-}
-</style>
+<style lang="scss" scoped></style>

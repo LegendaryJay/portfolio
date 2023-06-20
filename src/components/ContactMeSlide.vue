@@ -11,7 +11,14 @@
     </div>
     <div class="contact-area q-my-auto q-mx-auto q-pb-md column q-gutter-md">
       <span>
-        <q-btn size="xs" outline rounded icon="phone" href="tel:12623490843" />
+        <q-btn
+          size="xs"
+          outline
+          rounded
+          icon="phone"
+          type="a"
+          href="tel:12623490843"
+        />
         <b class="title-text q-ml-md">Phone</b> 262.349.0843
       </span>
       <span>
@@ -20,6 +27,7 @@
           rounded
           size="xs"
           icon="email"
+          type="a"
           href="mailto:amorecbellum@gmail.com?subject=data backup"
         />
         <b class="title-text q-ml-md">Email</b> amorecbellum@gmail.com
