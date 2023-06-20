@@ -18,14 +18,21 @@ const getImageUrl = (name) => {
       <q-card-section>
         <div class="slide-title text-weight-bolder">About Me</div>
       </q-card-section>
-      <q-card-section horizontal class="col q-pt-none">
+      <q-card-section horizontal class="col">
         <q-card-section class="col">
           <q-card flat class="fit column about-me-card">
             <q-card-section class="item-title"> At a Glance </q-card-section>
             <q-separator></q-separator>
-            <q-card-section horizontal class="col">
-              <q-card-section class="col">
-                <div class="subsection-title q-pr-md q-pb-xs">My Life</div>
+            <div
+              :horizontal="$q.screen.gt.md"
+              :class="'col ' + ($q.screen.gt.md ? 'row' : 'column')"
+            >
+              <q-card-section
+                :class="
+                  'col-8 q-pa-md' + ($q.screen.lt.lg ? 'q-pa-none  ' : '')
+                "
+              >
+                <div class="about-title q-pr-md q-pb-xs">My Life</div>
                 <div class="about-text q-pl-md text-justify q-pr-md q-pb-md">
                   Hello, I'm Dan Chianese, a recent graduate with an associates
                   in Web and Software Development. Currently seeking new
@@ -33,7 +40,7 @@ const getImageUrl = (name) => {
                   and enjoy tackling technical and user-oriented challenges.
                 </div>
 
-                <div class="subsection-title q-pr-md q-pb-xs">My Passions</div>
+                <div class="about-title q-pr-md q-pb-xs">My Passions</div>
                 <div class="about-text q-pl-md text-justify q-pr-md q-pb-md">
                   Since my early years, I've fostered a deep passion for
                   programming and design. From creating tools in Garry's Mod to
@@ -42,7 +49,7 @@ const getImageUrl = (name) => {
                   embracing constructive criticism, continuously growing and
                   adapting to new situations.
                 </div>
-                <div class="subsection-title full-width q-pr-md q-pb-xs">
+                <div class="about-title full-width q-pr-md q-pb-xs">
                   My Goals
                 </div>
                 <div class="q-pr-md q-pb-md q-pl-md about-text text-justify">
@@ -52,28 +59,50 @@ const getImageUrl = (name) => {
                   continuous challenges and opportunities for personal growth.
                 </div>
               </q-card-section>
-              <q-separator vertical></q-separator>
-              <q-card-section class="col-3">
-                <q-card flat class="skills-card col-3">
-                  <q-card-section class="subsection-title-small text-primary">
-                    <div><b>Nicki Kowalchuk</b></div>
-                    <div><i>WCTC Capstone Instructor</i></div>
-                  </q-card-section>
-                  <div class="subsection-text-small q-px-md q-pb-md">
-                    “Dan was a fantastic addition to his capstone project team.
-                    He did a lot of legwork to ensure he was understanding the
-                    needs of the application. The mockups Dan created showed a
-                    deep understanding of the process and will make the flow of
-                    the data entry easy for end-users.”
+              <q-separator :vertical="$q.screen.gt.md"></q-separator>
+              <q-card-section class="col row q-pa-none">
+                <q-scroll-area ho class="col q-pa-md">
+                  <div :class="'no-wrap' + ($q.screen.lt.lg ? 'row' : '')">
+                    <q-card flat class="skills-card q-pa-md">
+                      <div class="subsection-title-small text-primary">
+                        <div><b>Nicki Kowalchuk</b></div>
+                        <div><i>WCTC Capstone Instructor</i></div>
+                      </div>
+                      <div class="subsection-text-small">
+                        “Dan was a fantastic addition to his capstone project
+                        team. He did a lot of legwork to ensure he was
+                        understanding the needs of the application. The mockups
+                        Dan created showed a deep understanding of the process
+                        and will make the flow of the data entry easy for
+                        end-users.”
+                      </div>
+                    </q-card>
+                    <q-card flat class="skills-card q-pa-md q-mt-md">
+                      <div class="subsection-title-small text-primary">
+                        <div><b>Rajesh</b></div>
+                        <div><i>Mentor at SSR Total IT </i></div>
+                      </div>
+                      <div class="subsection-text-small">
+                        “I had the pleasure of working alongside Dan on a
+                        complex and demanding project, and I was continually
+                        impressed by his professionalism, dedication, and
+                        expertise. Dan consistently delivered high-quality work,
+                        even under tight deadlines and challenging
+                        circumstances. He has a keen eye for detail and an
+                        ability to think critically, which allowed him to
+                        identify and resolve potential issues before they became
+                        problems.”
+                      </div>
+                    </q-card>
                   </div>
-                </q-card>
+                </q-scroll-area>
               </q-card-section>
-            </q-card-section>
+            </div>
           </q-card>
         </q-card-section>
         <q-card-section class="column skill-wrapper">
           <div class="col-auto q-pb-md">
-            <q-card flat class="skills-card fit">
+            <q-card flat class="skills-card">
               <q-card-section>
                 <div class="item-title">Skills</div>
               </q-card-section>
@@ -173,12 +202,17 @@ const getImageUrl = (name) => {
   border-radius: 20px;
 }
 .about-title {
-  font-size: 1.4rem;
-  text-rendering: optimizeLegibility;
+  font-size: clamp(0.1rem, 0.5rem + 1vw, 1rem);
+  color: $primary;
+  @media (max-width: $breakpoint-md-max) {
+    font-size: clamp(0.1rem, 0.5rem + 1vw, 3rem);
+  }
 }
 .about-text {
-  font-size: 1.4rem;
-  text-rendering: optimizeLegibility;
+  font-size: clamp(0.5rem, 0.3rem + 1vw, 1.6rem);
+  @media (max-width: $breakpoint-md-max) {
+    font-size: clamp(0.5rem, 0.2rem + 1vw, 1rem);
+  }
 }
 
 .background-card {
