@@ -1,6 +1,6 @@
 <template>
   <div class="full-page row content-center">
-    <div class="id-area text-center q-px-lg q-py-md">
+    <div class="id-area text-center col-12 col-md-auto q-px-lg q-py-md">
       <q-img
         class="profile-picture q-mx-auto q-my-sm"
         :src="getImageUrl('profile-picture.png')"
@@ -73,7 +73,9 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 }
 
 .id-area {
-  border-right: 2px solid $dark;
+  @media (min-width: $breakpoint-md-min) {
+    border-right: 2px solid $dark;
+  }
 }
 .profile-picture {
   border-radius: 75% 25% 38% 62% / 65% 36% 64% 35%;
