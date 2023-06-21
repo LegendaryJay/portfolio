@@ -4,12 +4,35 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 import { ref } from 'vue';
 import SkillGraph from './SkillGraph.vue';
 
+const recommendations = [
+  {
+    name: 'Rajesh',
+    relation: 'Mentor at SSR Total IT',
+    snippet:
+      'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.',
+    fullText: 'This is the snippet! But there is more!',
+  },
+  {
+    name: 'Nicki Kowalchuk',
+    relation: 'WCTC Capstone Instructor',
+    snippet:
+      'Dan was a fantastic addition to his capstone project team. He did a lot of legwork to ensure he was understanding the needs of the application. The mockups Dan created showed a deep understanding of the process and will make the flow of the data entry easy for end-users.',
+  },
+  {
+    name: 'Stacy Read',
+    relation: 'WCTC Instructor',
+    snippet:
+      'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.',
+  },
+];
+
 const $q = useQuasar();
 const pageHeight = ref($q.screen.height);
 const onResize = (size) => {
-  console.log(size);
   pageHeight.value = size.height;
 };
+
+let skillsTextSize = ref(13);
 </script>
 
 <template>
@@ -19,16 +42,20 @@ const onResize = (size) => {
     :speed="1"
     :src="getImageUrl('blurry-abstract.png')"
   >
-    <div class="background-card q-pl-md q-pb-md">
+    <div class="background-card medium-spacer-parent">
       <q-resize-observer @resize="onResize" />
-      <div class="slide-title text-weight-bolder q-mt-md">About Me</div>
+      <div class="slide-title text-weight-bolder medium-spacer-child">
+        About Me
+      </div>
       <div class="row">
-        <div class="q-pr-md q-pt-md col-lg-8">
-          <q-card flat class="about-me-card full-height">
-            <q-card-section class="item-title"> At a Glance </q-card-section>
+        <div class="medium-spacer-child col-lg-8">
+          <q-card flat class="about-me-card">
+            <q-card-section class="item-title medium-spacer-parent">
+              At a Glance
+            </q-card-section>
             <q-separator></q-separator>
-            <div class="row q-pl-md q-pb-md">
-              <div class="col-12 col-md-8 q-pr-md q-pt-md">
+            <div class="row medium-spacer-parent col">
+              <div class="col-12 col-md-8 medium-spacer-child">
                 <div class="about-title">My Life</div>
                 <div class="about-text q-pl-md text-justify">
                   Hello, I'm Dan Chianese, a recent graduate with an associates
@@ -54,65 +81,59 @@ const onResize = (size) => {
                   continuous challenges and opportunities for personal growth.
                 </div>
               </div>
-
-              <div
+              <q-scroll-area
                 :class="
-                  'col-12 col-md-4 q-pr-md q-pt-md ' +
+                  'medium-spacer-child col-12 col-md-4 ' +
                   ($q.screen.lt.md ? 'row' : 'column')
                 "
               >
-                <div class="q-pr-md q-pt-md">
-                  <q-card flat class="col skills-card q-pa-md">
+                <div
+                  class="medium-spacer-child"
+                  v-for="(rec, key) in recommendations"
+                  :key="key"
+                >
+                  <q-card flat class="medium-spacer-parent medium-spacer-child">
                     <div class="subsection-title-small text-primary">
-                      <div><b>Nicki Kowalchuk</b></div>
-                      <div><i>WCTC Capstone Instructor</i></div>
+                      <div class="row justify-between">
+                        <div class="column">
+                          <b> {{ rec.name }}</b>
+                          <i> {{ rec.relation }} </i>
+                        </div>
+
+                        <div>
+                          <q-btn
+                            rounded
+                            outline
+                            padding="xs md"
+                            size="sm"
+                            icon="read_more"
+                            v-if="rec?.fullText ?? false"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div class="subsection-text-small">
-                      “Dan was a fantastic addition to his capstone project
-                      team. He did a lot of legwork to ensure he was
-                      understanding the needs of the application. The mockups
-                      Dan created showed a deep understanding of the process and
-                      will make the flow of the data entry easy for end-users.”
-                    </div>
+                    <div class="subsection-text-small">“{{ rec.snippet }}”</div>
                   </q-card>
                 </div>
-                <div class="q-pr-md q-pt-md">
-                  <q-card flat class="skills-card q-pa-md">
-                    <div class="subsection-title-small text-primary">
-                      <div><b>Rajesh</b></div>
-                      <div><i>Mentor at SSR Total IT </i></div>
-                    </div>
-                    <div class="subsection-text-small">
-                      “I had the pleasure of working alongside Dan on a complex
-                      and demanding project, and I was continually impressed by
-                      his professionalism, dedication, and expertise. Dan
-                      consistently delivered high-quality work, even under tight
-                      deadlines and challenging circumstances. He has a keen eye
-                      for detail and an ability to think critically, which
-                      allowed him to identify and resolve potential issues
-                      before they became problems.”
-                    </div>
-                  </q-card>
-                </div>
-              </div>
+              </q-scroll-area>
             </div>
           </q-card>
         </div>
 
         <div class="col-sm-12 col-lg-4 col-12 row">
-          <div class="q-pr-md q-pt-md col-sm-6 col-lg-12 col-12">
+          <div class="medium-spacer-child col-sm-6 col-lg-12 col-12">
             <q-card flat class="about-me-card">
               <q-card-section>
                 <div class="item-title">Skills</div>
               </q-card-section>
               <q-separator></q-separator>
               <q-card-section>
-                <skill-graph />
+                <skill-graph :size="skillsTextSize" />
               </q-card-section>
             </q-card>
           </div>
 
-          <div class="q-pr-md q-pt-md col-sm-6 col-lg-12 col-12">
+          <div class="medium-spacer-child col-sm-6 col-lg-12 col-12">
             <q-card flat class="about-me-card fit">
               <q-card-section class="row justify-between">
                 <div class="item-title">Experience</div>
@@ -158,30 +179,38 @@ const onResize = (size) => {
 </template>
 
 <style lang="scss" scoped>
+.medium-spacer-parent {
+  padding-top: 16px;
+  padding-right: 16px;
+}
+.medium-spacer-child {
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
 .slide-title {
   color: white;
-  font-size: 2rem;
+  font-size: $text-xlarge;
 }
 
 .item-title {
-  font-size: 1.3rem;
+  font-size: $text-large;
   font-weight: bolder;
   color: $secondary;
 }
 
 .history-text {
-  font-size: small;
+  font-size: $text-small;
 }
 .subsection-title {
-  font-size: 1.5rem;
+  font-size: $text-large;
   color: $primary;
 }
 .subsection-title-small {
-  font-size: 0.9rem;
+  font-size: $text-small;
   color: $primary;
 }
 .subsection-text-small {
-  font-size: 0.8rem;
+  font-size: $text-xsmall;
   color: white;
 }
 
@@ -191,11 +220,11 @@ const onResize = (size) => {
   border-radius: 12px;
 }
 .about-title {
-  font-size: clamp(0.8rem, 0.5rem + 1vw, 3rem);
+  font-size: $text-large;
   color: $primary;
 }
 .about-text {
-  font-size: clamp(0.8rem, 0.3rem + 1vw, 1.6rem);
+  font-size: $text-medium;
 }
 
 .background-card {

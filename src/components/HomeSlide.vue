@@ -3,9 +3,9 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 </script>
 
 <template>
-  <div class="home-background fit window-height row flex-center">
+  <div class="home-background fit row flex-center">
     <q-card flat class="id-card col-12 col-sm-7 column flex-center">
-      <q-card-section :horizontal="$q.screen.gt.sm">
+      <q-card-section :horizontal="$q.screen.gt.md">
         <q-card-section class="col-4">
           <q-img
             class="profile-picture q-ma-md col-auto q-mx-auto q-my-auto"
@@ -51,6 +51,7 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 .home-background {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
+  min-height: 100vh;
 }
 
 .id-card {
@@ -70,27 +71,21 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
   position: absolute;
   top: 5px;
   right: 5px;
-  border: 1 solid orange;
 }
 .name-text {
   font-weight: 500;
-  font-size: 40px;
-  padding-bottom: 8px;
+  font-size: $text-xlarge;
+  color: $secondary;
 }
 
 .title-text {
   font-weight: 900;
-  font-size: 16px;
+  font-size: $text-large;
   color: $primary;
 }
 
 .details-text {
   font-weight: 300;
-  font-size: 18px;
-}
-
-.scroll-text {
-  color: $secondary;
-  font-size: smaller;
+  font-size: $text-large;
 }
 </style>
