@@ -8,7 +8,7 @@
     >
       {{ skillToString(row[1]) }}
     </q-tooltip>
-    <div class="row justify-between">
+    <div class="row">
       <div
         :style="{
           'font-size': textSize + 'px',
@@ -16,6 +16,7 @@
       >
         {{ row[0] }}
       </div>
+      <div class="col dot"></div>
       <q-rating
         v-model="tempData[row[0]]"
         max="5"
@@ -67,4 +68,14 @@ const textSize = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.dot {
+  border-bottom: dotted 3px rgba($primary, 0.3);
+  width: 100px;
+  float: left;
+  position: relative;
+  display: block;
+  height: 12px;
+  margin: 0 5px 0 5px;
+}
+</style>
