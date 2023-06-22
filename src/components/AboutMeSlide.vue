@@ -1,16 +1,39 @@
 <script setup>
 import { useQuasar } from 'quasar';
+
 import { getImageUrl } from 'src/scripts/ImageFromUrl';
 import { ref } from 'vue';
+import RecommendationComponent from './RecommendationComponent.vue';
 import SkillGraph from './SkillGraph.vue';
 
+let stacyImg = getImageUrl('recommendation/StacyReed.png');
 const recommendations = [
   {
     name: 'Rajesh',
     relation: 'Mentor at SSR Total IT',
     snippet:
       'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.',
-    fullText: 'This is the snippet! But there is more!',
+    fullText: `
+    <pre style="white-space: pre-line;">
+June 21, 2023
+
+  I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise.
+
+  Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances.
+  He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.
+
+  Dan's strong technical skills and ability to collaborate with team members made working with him a seamless experience.
+  He knows how to communicate effectively, listen to others' ideas, and contribute constructively to discussions.
+
+  Skills:  <ul>
+    <li><b>Problem-solving</b>: Dan is a skilled problem-solver who thrives in challenging situations. He has a knack for identifying root causes and developing innovative solutions to overcome obstacles.</li>
+    <li><b>Team Collaboration</b>: Dan is a valuable team player who excels in collaborating with colleagues from diverse backgrounds. He actively contributes ideas, listens to others' perspectives, and fosters a positive and inclusive team environment.</li>
+    <li><b>Analytical Thinking</b>: Dan possesses strong analytical skills, allowing him to assess complex situations, gather relevant data, and make informed decisions. He has the ability to analyze information critically, identify patterns, and provide insights that drive strategic decision-making.</li>
+    <li><b>Adaptability</b>: Dan is highly adaptable and thrives in dynamic work environments. He quickly adjusts to new challenges, embraces change, and maintains a positive attitude even in demanding situations.</li>
+  </ul>
+I wholeheartedly recommend Dan to any organization looking for a highly skilled and reliable professional.
+</pre>
+    `,
   },
   {
     name: 'Nicki Kowalchuk',
@@ -23,6 +46,7 @@ const recommendations = [
     relation: 'WCTC Instructor',
     snippet:
       'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.',
+    fullText: '<img style="max-width: 100%;" src="' + stacyImg + '">',
   },
 ];
 
@@ -47,9 +71,10 @@ let skillsTextSize = ref(13);
       <div class="slide-title text-weight-bolder medium-spacer-child">
         About Me
       </div>
+
       <div class="row">
-        <div class="medium-spacer-child col-lg-8">
-          <q-card flat class="about-me-card">
+        <div class="medium-spacer-child col-lg-8 column">
+          <q-card flat class="about-me-card col column">
             <q-card-section class="item-title medium-spacer-parent">
               At a Glance
             </q-card-section>
@@ -83,7 +108,7 @@ let skillsTextSize = ref(13);
               </div>
               <q-scroll-area
                 :class="
-                  'medium-spacer-child col-12 col-md-4 ' +
+                  'q-mb-md q-pt-md  col-12 col-md-4 ' +
                   ($q.screen.lt.md ? 'row' : 'column')
                 "
               >
@@ -92,28 +117,9 @@ let skillsTextSize = ref(13);
                   v-for="(rec, key) in recommendations"
                   :key="key"
                 >
-                  <q-card flat class="medium-spacer-parent medium-spacer-child">
-                    <div class="subsection-title-small text-primary">
-                      <div class="row justify-between">
-                        <div class="column">
-                          <b> {{ rec.name }}</b>
-                          <i> {{ rec.relation }} </i>
-                        </div>
-
-                        <div>
-                          <q-btn
-                            rounded
-                            outline
-                            padding="xs md"
-                            size="sm"
-                            icon="read_more"
-                            v-if="rec?.fullText ?? false"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="subsection-text-small">“{{ rec.snippet }}”</div>
-                  </q-card>
+                  <RecommendationComponent
+                    :recommendation="rec"
+                  ></RecommendationComponent>
                 </div>
               </q-scroll-area>
             </div>
