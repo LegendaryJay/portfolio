@@ -20,7 +20,7 @@
       <q-rating
         v-model="tempData[row[0]]"
         max="5"
-        :size="textSize + 'px'"
+        :size="props.size + 'px'"
         icon="fa-regular fa-circle"
         icon-selected="fa-solid fa-circle"
         icon-half="fa-regular fa-circle-dot"
