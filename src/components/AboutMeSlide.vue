@@ -2,38 +2,16 @@
 import { useQuasar } from 'quasar';
 
 import { getImageUrl } from 'src/scripts/ImageFromUrl';
-import { ref } from 'vue';
+import { ref, onMounted, computed, reactive } from 'vue';
 import RecommendationComponent from './RecommendationComponent.vue';
 import SkillGraph from './SkillGraph.vue';
 
-let stacyImg = getImageUrl('recommendation/StacyReed.png');
-const recommendations = [
+const recommendations = reactive([
   {
     name: 'Rajesh',
     relation: 'Mentor at SSR Total IT',
     snippet:
       'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.',
-    fullText: `
-    <pre style="white-space: pre-line;">
-June 21, 2023
-
-  I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise.
-
-  Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances.
-  He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.
-
-  Dan's strong technical skills and ability to collaborate with team members made working with him a seamless experience.
-  He knows how to communicate effectively, listen to others' ideas, and contribute constructively to discussions.
-
-  Skills:  <ul>
-    <li><b>Problem-solving</b>: Dan is a skilled problem-solver who thrives in challenging situations. He has a knack for identifying root causes and developing innovative solutions to overcome obstacles.</li>
-    <li><b>Team Collaboration</b>: Dan is a valuable team player who excels in collaborating with colleagues from diverse backgrounds. He actively contributes ideas, listens to others' perspectives, and fosters a positive and inclusive team environment.</li>
-    <li><b>Analytical Thinking</b>: Dan possesses strong analytical skills, allowing him to assess complex situations, gather relevant data, and make informed decisions. He has the ability to analyze information critically, identify patterns, and provide insights that drive strategic decision-making.</li>
-    <li><b>Adaptability</b>: Dan is highly adaptable and thrives in dynamic work environments. He quickly adjusts to new challenges, embraces change, and maintains a positive attitude even in demanding situations.</li>
-  </ul>
-I wholeheartedly recommend Dan to any organization looking for a highly skilled and reliable professional.
-</pre>
-    `,
   },
   {
     name: 'Nicki Kowalchuk',
@@ -46,9 +24,34 @@ I wholeheartedly recommend Dan to any organization looking for a highly skilled 
     relation: 'WCTC Instructor',
     snippet:
       'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.',
-    fullText: '<img style="max-width: 100%;" src="' + stacyImg + '">',
   },
-];
+]);
+onMounted(async () => {
+  fetch('src/assets/recommendation/StacyReed.txt')
+    .then((response) => response.text())
+    .then((text) => {
+      recommendations[2].fullText = text;
+    });
+
+  fetch('src/assets/recommendation/Rajesh.txt')
+    .then((response) => response.text())
+    .then((text) => {
+      recommendations[0].fullText = text;
+    });
+
+  try {
+    recommendations[2].fullText = (await fetch()).text();
+    fetchStacy.text;
+  } catch (ex) {
+    console.log('Error in fetch');
+  }
+  try {
+    const fetchRajesh = await fetch('src/assets/recommendation/Rajesh.txt');
+    recommendations[0].fullText = fetchRajesh.text();
+  } catch (ex) {
+    console.log('Error in fetch');
+  }
+});
 
 const $q = useQuasar();
 const pageHeight = ref($q.screen.height);
