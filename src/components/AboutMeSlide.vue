@@ -59,7 +59,7 @@ const onResize = (size) => {
   pageHeight.value = size.height;
 };
 
-let skillsTextSize = ref(13);
+let skillsTextSize = ref(14);
 </script>
 
 <template>
@@ -76,14 +76,19 @@ let skillsTextSize = ref(13);
       </div>
 
       <div class="row">
-        <div class="medium-spacer-child col-lg-8 column">
+        <div class="medium-spacer-child col-lg-4 column">
           <q-card flat class="about-me-card col column">
             <q-card-section class="item-title medium-spacer-parent">
               At a Glance
             </q-card-section>
             <q-separator></q-separator>
-            <div class="row medium-spacer-parent col">
-              <div class="col-12 col-md-8 medium-spacer-child">
+            <div
+              :class="
+                'row medium-spacer-parent col ' +
+                ($q.screen.lt.md ? 'column' : 'row')
+              "
+            >
+              <div class="col medium-spacer-child">
                 <div class="about-title">My Life</div>
                 <div class="about-text q-pl-md text-justify">
                   Hello, I'm Dan Chianese, a recent graduate with an associates
@@ -109,26 +114,9 @@ let skillsTextSize = ref(13);
                   continuous challenges and opportunities for personal growth.
                 </div>
               </div>
-              <q-scroll-area
-                :class="
-                  'q-mb-md q-pt-md  col-12 col-md-4 ' +
-                  ($q.screen.lt.md ? 'row' : 'column')
-                "
-              >
-                <div
-                  class="medium-spacer-child"
-                  v-for="(rec, key) in recommendations"
-                  :key="key"
-                >
-                  <RecommendationComponent
-                    :recommendation="rec"
-                  ></RecommendationComponent>
-                </div>
-              </q-scroll-area>
             </div>
           </q-card>
         </div>
-
         <div class="col-sm-12 col-lg-4 col-12 row">
           <div class="medium-spacer-child col-sm-6 col-lg-12 col-12">
             <q-card flat class="about-me-card">
@@ -160,8 +148,8 @@ let skillsTextSize = ref(13);
               </q-card-section>
               <q-separator></q-separator>
               <q-card-section>
-                <div class="subsection-title-small">Education</div>
-                <div class="q-px-md row subsection-text-small">
+                <div class="subsection-title">Education</div>
+                <div class="q-px-md row subsection-text">
                   <div class="col-auto"><b>Web & Software Associates</b></div>
                   <div class="dot col"></div>
                   <div class="col-auto">May 2023</div>
@@ -169,9 +157,9 @@ let skillsTextSize = ref(13);
                     <i>Waukesha County Technical College </i>
                   </div>
                 </div>
-                <div class="subsection-title-small q-pt-md">Work</div>
+                <div class="subsection-title q-pt-md">Work</div>
                 <div class="q-ml-md row-inline">
-                  <div class="row subsection-text-small">
+                  <div class="row subsection-text">
                     <b class="col-auto">Developer Intern</b>
                     <div class="dot col"></div>
                     <div class="col-auto">Feb - May 2023</div>
@@ -181,6 +169,30 @@ let skillsTextSize = ref(13);
               </q-card-section>
             </q-card>
           </div>
+        </div>
+        <div class="col-12 col-lg-4 medium-spacer-child">
+          <q-card flat class="about-me-card">
+            <q-card-section class="item-title">
+              Recommendations
+            </q-card-section>
+            <q-separator></q-separator>
+            <div
+              :class="
+                'medium-spacer-parent ' +
+                ($q.screen.lt.sm || $q.screen.gt.md ? 'column' : 'row no-wrap')
+              "
+            >
+              <div
+                class="col medium-spacer-child"
+                v-for="(rec, key) in recommendations"
+                :key="key"
+              >
+                <RecommendationComponent
+                  :recommendation="rec"
+                ></RecommendationComponent>
+              </div>
+            </div>
+          </q-card>
         </div>
       </div>
     </div>

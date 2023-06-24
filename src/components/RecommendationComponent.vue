@@ -1,76 +1,70 @@
 <template>
-  <div>
-    <q-card
-      flat
-      id="small-rec"
-      class="medium-spacer-parent medium-spacer-child"
-    >
-      <div :class="['subsection-title-', size, ' text-primary'].join('')">
-        <div class="row justify-between">
-          <div class="column">
-            <b> {{ recommendation.name }}</b>
-            <i> {{ recommendation.relation }} </i>
-          </div>
+  <q-card flat id="small-rec" class="medium-spacer-parent fit">
+    <div :class="['subsection-title-', size, ' text-primary'].join('')">
+      <div class="row justify-between">
+        <div class="column">
+          <b> {{ recommendation.name }}</b>
+          <i> {{ recommendation.relation }} </i>
+        </div>
 
-          <div>
-            <q-btn
-              rounded
-              outline
-              label="Read Full"
-              icon-right="read_more"
-              padding="xs md"
-              size="sm"
-              @click="openRecomendationModal"
-              v-if="recommendation?.fullText ?? false"
-            />
-          </div>
+        <div>
+          <q-btn
+            rounded
+            outline
+            label="Read Full"
+            icon-right="read_more"
+            padding="xs md"
+            size="sm"
+            @click="openRecomendationModal"
+            v-if="recommendation?.fullText ?? false"
+          />
         </div>
       </div>
-      <div :class="['subsection-text-', size].join('')">
-        “{{ recommendation.snippet }}”
-      </div>
-    </q-card>
+    </div>
+    <div :class="['subsection-text-', size].join('')">
+      “{{ recommendation.snippet }}”
+    </div>
+  </q-card>
 
-    <q-dialog
-      v-model="dialog"
-      full-height
-      full-width
-      @click="closeRecomendationModal"
-    >
-      <div class="fit">
-        <div class="big-rec-card q-mx-auto">
-          <q-card flat id="big-rec" class="q-pb-md p-px-md column fit">
-            <div class="row justify-between col-auto q-pa-md">
-              <div class="column">
-                <b class="text-primary text-h4"> {{ recommendation.name }} </b>
-                <i class="text-accent text-subtitle">
-                  {{ recommendation.relation }}
-                </i>
-              </div>
-              <div class="q-my-auto">
-                <q-btn
-                  class="q-my-auto"
-                  icon="close"
-                  flat
-                  round
-                  dense
-                  @click="closeRecomendationModal"
-                />
-              </div>
+  <q-dialog
+    v-model="dialog"
+    full-height
+    full-width
+    @click="closeRecomendationModal"
+  >
+    <div class="fit">
+      <div class="big-rec-card q-mx-auto">
+        <q-card flat id="big-rec" class="q-pb-md p-px-md column fit">
+          <div class="row justify-between col-auto q-pa-md">
+            <div class="column">
+              <b class="text-primary text-h4"> {{ recommendation.name }} </b>
+              <i class="text-accent text-subtitle">
+                {{ recommendation.relation }}
+              </i>
             </div>
-            <div class="col q-px-md q-pb-md">
-              <q-scroll-area class="fit">
-                <div
-                  class="dialog-content q-pa-md"
-                  v-html="recommendation.fullText"
-                ></div>
-              </q-scroll-area>
+            <div class="q-my-auto">
+              <q-btn
+                class="q-my-auto"
+                icon="close"
+                flat
+                round
+                dense
+                @click="closeRecomendationModal"
+              />
             </div>
-          </q-card>
-        </div>
+          </div>
+          <div class="col q-px-md q-pb-md">
+            <q-scroll-area class="fit">
+              <div
+                class="dialog-content q-pa-md"
+                v-html="recommendation.fullText"
+              ></div>
+            </q-scroll-area>
+          </div>
+        </q-card>
       </div>
-    </q-dialog>
-  </div>
+    </div>
+  </q-dialog>
 </template>
 
 <script>

@@ -66,7 +66,7 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 </script>
 <style lang="scss" scoped>
 .full-page {
-  background-color: rgba(black, 0.5);
+  background-color: $dark;
   backdrop-filter: blur(15px);
   background-blend-mode: multiply;
   margin: 0;
