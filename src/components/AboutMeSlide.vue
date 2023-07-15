@@ -2,55 +2,40 @@
 import { useQuasar } from 'quasar';
 
 import { getImageUrl } from 'src/scripts/ImageFromUrl';
-import { ref, onMounted, computed, reactive } from 'vue';
-import RecommendationComponent from './RecommendationComponent.vue';
+import { ref, onMounted, reactive } from 'vue';
+import ExpandoCard from './ExpandoCard.vue';
+import Expando from '/src/scripts/ExpandoObject.js';
 import SkillGraph from './SkillGraph.vue';
 
 const recommendations = reactive([
-  {
-    name: 'Rajesh',
-    relation: 'Mentor at SSR Total IT',
-    snippet:
-      'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.',
-  },
-  {
-    name: 'Nicki Kowalchuk',
-    relation: 'WCTC Capstone Instructor',
-    snippet:
-      'Dan was a fantastic addition to his capstone project team. He did a lot of legwork to ensure he was understanding the needs of the application. The mockups Dan created showed a deep understanding of the process and will make the flow of the data entry easy for end-users.',
-  },
-  {
-    name: 'Stacy Read',
-    relation: 'WCTC Instructor',
-    snippet:
-      'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.',
-  },
+  new Expando(
+    'Rajesh',
+    'Mentor at SSR Total IT',
+    'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.'
+  ),
+  new Expando(
+    'Nicki Kowalchuk',
+    'WCTC Capstone Instructor',
+    'Dan was a fantastic addition to his capstone project team. He did a lot of legwork to ensure he was understanding the needs of the application. The mockups Dan created showed a deep understanding of the process and will make the flow of the data entry easy for end-users.'
+  ),
+  new Expando(
+    'Stacy Read',
+    'WCTC Instructor',
+    'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.'
+  ),
 ]);
 onMounted(async () => {
   fetch('src/assets/recommendation/StacyReed.txt')
     .then((response) => response.text())
     .then((text) => {
-      recommendations[2].fullText = text;
+      recommendations[2].longDescription = text;
     });
 
   fetch('src/assets/recommendation/Rajesh.txt')
     .then((response) => response.text())
     .then((text) => {
-      recommendations[0].fullText = text;
+      recommendations[0].longDescription = text;
     });
-
-  try {
-    recommendations[2].fullText = (await fetch()).text();
-    fetchStacy.text;
-  } catch (ex) {
-    console.log('Error in fetch');
-  }
-  try {
-    const fetchRajesh = await fetch('src/assets/recommendation/Rajesh.txt');
-    recommendations[0].fullText = fetchRajesh.text();
-  } catch (ex) {
-    console.log('Error in fetch');
-  }
 });
 
 const $q = useQuasar();
@@ -187,9 +172,7 @@ let skillsTextSize = ref(14);
                 v-for="(rec, key) in recommendations"
                 :key="key"
               >
-                <RecommendationComponent
-                  :recommendation="rec"
-                ></RecommendationComponent>
+                <ExpandoCard :item="rec"></ExpandoCard>
               </div>
             </div>
           </q-card>
@@ -251,6 +234,7 @@ let skillsTextSize = ref(14);
 .background-card {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
+  //min-height: 100vh)
 }
 .dot {
   border-bottom: dotted 3px rgba($primary, 0.3);
@@ -260,20 +244,5 @@ let skillsTextSize = ref(14);
   display: block;
   height: 12px;
   margin: 0 5px 0 5px;
-}
-
-.flex-break {
-  flex: 1 0 100% !important;
-}
-
-.row {
-  .flex-break {
-    height: 0 !important;
-  }
-}
-.column {
-  .flex-break {
-    width: 0 !important;
-  }
 }
 </style>

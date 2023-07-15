@@ -9,3 +9,30 @@
   height: 12px;
   margin: 0 5px 0 5px;
 }
+.medium-spacer-parent {
+  padding-top: 16px;
+  padding-right: 16px;
+}
+.medium-spacer-child {
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
+
+.text-xlarge {
+  font-size: $text-xlarge;
+}
+.text-large {
+  font-size: $text-large;
+}
+
+.text-medium {
+  font-size: $text-medium;
+}
+
+.text-small {
+  font-size: $text-small;
+}
+
+.text-xsmall {
+  font-size: $text-xsmall;
+}

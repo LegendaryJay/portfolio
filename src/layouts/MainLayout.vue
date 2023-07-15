@@ -52,21 +52,8 @@
       </q-drawer>
 
       <q-page-container class="window-height">
-        <router-view />
+        <index-page />
       </q-page-container>
-
-      <!-- <q-footer  elevated class=" bg-grey-8 text-white">
-        <q-toolbar>
-          <q-toolbar-title>
-            <q-avatar>
-              <img
-                src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-              />
-            </q-avatar>
-            <div>Title</div>
-          </q-toolbar-title>
-        </q-toolbar>
-      </q-footer> -->
     </q-layout>
   </div>
 </template>
@@ -77,39 +64,21 @@ import HamburgerMenu from 'src/components/HamburgerMenu.vue';
 import backgroundUrl from 'src/assets/abstract-background.png';
 
 import { useQuasar } from 'quasar';
+import IndexPage from 'src/pages/IndexPage.vue';
 
 export default {
   components: {
     HamburgerMenu,
+    IndexPage,
   },
   name: 'MyComponent',
   setup() {
     const $q = useQuasar();
-
-    //let isMobile = ref(false);
-    // const miniHideValue = ref(true);
-
-    // const showMode = computed({
-    //   get: () => {
-    //     console.log(isMobile.value);
-    //     return !isMobile.value || !miniHideValue.value;
-    //   },
-    //   set: (val) => {
-    //     miniHideValue.value = !val;
-    //   },
-    // });
     const showMode = ref(false);
     $q.dark.set(true);
-
-    // function checkMobile(el) {
-    //   //isMobile.value = !!el.$el.querySelector('.q-drawer--mobile');
-    // }
-
     return {
       showMode,
-      //miniHideValue,
-      //checkMobile,
-      //isMobile,
+
       backgroundUrl,
     };
   },
