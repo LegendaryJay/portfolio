@@ -27,7 +27,7 @@ let tempActivePage = '';
 
 let timer;
 
-const scrollListener = function (e) {
+const scrollListener = function () {
   clearTimeout(timer);
   timer = setTimeout(function () {
     console.log('!');

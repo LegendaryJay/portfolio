@@ -90,26 +90,26 @@ const projects = reactive([
       },
     ]
   ),
-  new Expando(
-    'Yellowstone Job Application',
-    'Vue 3 (Quasar-plugin), HTML/CSS/JS, SCSS, [Design]',
-    'This was a school project where I needed to redesign from scratch an old Yellowstone job application'
-  ),
-  new Expando(
-    'Wireframes',
-    'Balsamiq Wireframes, [Design]',
-    'I made these for my Web and Software capstone project'
-  ),
-  new Expando(
-    'Olympic Medals',
-    'React, HTML/CSS/JS',
-    'I made this to test my react capabilities and work with '
-  ),
-  new Expando(
-    'Media Library',
-    'C#',
-    'I learned C# and entity framework with this one.'
-  ),
+  // new Expando(
+  //   'Yellowstone Job Application',
+  //   'Vue 3 (Quasar-plugin), HTML/CSS/JS, SCSS, [Design]',
+  //   'This was a school project where I needed to redesign from scratch an old Yellowstone job application'
+  // ),
+  // new Expando(
+  //   'Wireframes',
+  //   'Balsamiq Wireframes, [Design]',
+  //   'I made these for my Web and Software capstone project'
+  // ),
+  // new Expando(
+  //   'Olympic Medals',
+  //   'React, HTML/CSS/JS',
+  //   'I made this to test my react capabilities and work with '
+  // ),
+  // new Expando(
+  //   'Media Library',
+  //   'C#',
+  //   'I learned C# and entity framework with this one.'
+  // ),
 ]);
 </script>
 
