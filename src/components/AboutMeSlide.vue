@@ -2,7 +2,7 @@
 import { useQuasar } from 'quasar';
 
 import { getImageUrl } from 'src/scripts/ImageFromUrl';
-import { ref, onMounted, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import ExpandoCard from './ExpandoCard.vue';
 import Expando from '/src/scripts/ExpandoObject.js';
 import SkillGraph from './SkillGraph.vue';
@@ -85,7 +85,7 @@ const recommendations = reactive([
         want someone who personally embraces each challenge and owns it.
       </li>
       <li>
-        <strong>Curiosity</strong>: It's not enough that something works – they
+        <strong>Curiosity</strong>: It's not enough that something works - they
         want to know why it works. What makes one solution better than another?
         Technology is always changing, so they keep one eye on the bigger picture.
       </li>
@@ -110,7 +110,7 @@ const recommendations = reactive([
     </p>
     <p>Sincerely,</p>
     <img
-      src="https://raw.githubusercontent.com/LegendaryJay/portfolio/72c3c33dc7c9409ed79300f0452347ad0c953f29/src/assets/recommendation/StacySignature.svg"
+      src="https://raw.githubusercontent.com/LegendaryJay/portfolio/87ff09372f5c43e5125b6f3b8a69300c8c33abe2/src/assets/StacySignature.svg"
       alt="Signature"
       style="max-height: 4rem"
     />
