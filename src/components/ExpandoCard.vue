@@ -20,6 +20,15 @@
       </q-item-section>
     </q-item>
     <q-separator></q-separator>
+
+    <q-img
+      v-if="!!item.img"
+      fit="contain"
+      style="width: 92%"
+      class="q-mt-sm q-mx-auto"
+      :src="getImageUrl(item.img)"
+    />
+
     <div class="column q-px-md q-py-sm col">
       <div class="text- small">{{ item.description }}</div>
     </div>
@@ -60,6 +69,7 @@
 <script>
 import { ref } from 'vue';
 import Expando from '/src/scripts/ExpandoObject.js';
+import { getImageUrl } from 'src/scripts/ImageFromUrl';
 
 export default {
   props: {
@@ -92,6 +102,7 @@ export default {
       closeModal,
       isBig,
       isOpen,
+      getImageUrl,
     };
   },
 };

@@ -80,7 +80,8 @@ const projects = reactive([
       </dd>
     </dl>`,
     'info',
-    'commentary'
+    'commentary',
+    'PortfolioPage.png'
   ),
   new Expando(
     'Yellowstone Job Application',

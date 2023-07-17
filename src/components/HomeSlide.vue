@@ -40,12 +40,9 @@ const links = [
       <q-card-section :horizontal="$q.screen.gt.md">
         <q-card-section class="col-4">
           <q-img
-            class="profile-picture q-ma-md col-auto q-mx-auto q-my-auto"
-            fit="contain"
-            :img-style="{
-              'border-radius': '75% 25% 38% 62% / 65% 36% 64% 35%',
-            }"
-            :src="getImageUrl('profile-picture.png')"
+            class="profile-picture col-auto q-mx-auto q-my-auto"
+            fit="cover"
+            :src="getImageUrl('profile-picture.jpg')"
           />
           <div class="row flex-center q-mt-md">
             <q-btn
@@ -123,6 +120,7 @@ const links = [
   display: block;
   max-height: 15rem;
   max-width: 15rem;
+  //border-radius: 10px;
   border-radius: 75% 25% 38% 62% / 65% 36% 64% 35%;
 }
 .social-links {
