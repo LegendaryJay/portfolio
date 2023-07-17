@@ -1,5 +1,4 @@
 <script setup>
-import { getImageUrl } from 'src/scripts/ImageFromUrl';
 import { reactive } from 'vue';
 import Expando from 'src/scripts/ExpandoObject';
 import ExpandoCard from './ExpandoCard.vue';
@@ -81,7 +80,15 @@ const projects = reactive([
     </dl>`,
     'info',
     'commentary',
-    'PortfolioPage.png'
+    'PortfolioPage.png',
+    [
+      {
+        title: 'Code',
+        icon: 'code',
+        href: 'https://github.com/LegendaryJay/portfolio',
+        target: '_blank',
+      },
+    ]
   ),
   new Expando(
     'Yellowstone Job Application',

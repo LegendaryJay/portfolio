@@ -68,18 +68,17 @@ const links = [
         <q-card-section class="contact-area column" v-if="showLinks">
           <q-list>
             <q-item v-for="link in links" :key="link.title">
-              <q-item-section avatar clickable>
+              <q-card-actions avatar clickable>
                 <q-btn
                   color="accent"
-                  size="md"
                   outline
-                  rounded
+                  ripple
                   :icon="link?.icon"
                   :href="link?.href"
                   :target="link?.target"
                   :type="link?.type"
                 />
-              </q-item-section>
+              </q-card-actions>
               <q-item-section>
                 <q-item-label>{{ link.title }}</q-item-label>
                 <q-separator vertical />

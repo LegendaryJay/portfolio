@@ -25,13 +25,28 @@
       v-if="!!item.img"
       fit="contain"
       style="width: 92%"
-      class="q-mt-sm q-mx-auto"
+      class="q-my-sm q-mx-auto"
       :src="getImageUrl(item.img)"
     />
 
     <div class="column q-px-md q-py-sm col">
       <div class="text- small">{{ item.description }}</div>
     </div>
+    <q-separator v-if="(item.actionButtons?.length ?? 0) > 0"></q-separator>
+    <q-card-actions v-if="(item.actionButtons?.length ?? 0) > 0" align="around">
+      <q-btn
+        v-for="(button, key) in item.actionButtons"
+        :key="key"
+        color="accent"
+        size="md"
+        flat
+        :label="button?.title"
+        :icon="button?.icon"
+        :href="button?.href"
+        :target="button?.target"
+        :type="button?.type"
+      />
+    </q-card-actions>
   </q-card>
   <q-dialog v-model="isOpen" full-height @click="closeModal">
     <q-card flat class="big-rec-card medium-spacer-parent column">

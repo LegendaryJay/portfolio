@@ -7,7 +7,7 @@ export default class Expando {
     longDescriptionIcon = 'read_more',
     iconLabel = 'Read Full',
     img = '',
-    footer = null
+    actionButtons = []
   ) {
     this.title = title;
     this.subtitle = subtitle;
@@ -16,6 +16,6 @@ export default class Expando {
     this.longDescriptionIcon = longDescriptionIcon;
     this.iconLabel = iconLabel;
     this.img = img;
-    this.footer = footer;
+    this.actionButtons = actionButtons;
   }
 }
