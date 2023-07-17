@@ -125,6 +125,7 @@ const $q = useQuasar();
 const pageHeight = ref($q.screen.height);
 const onResize = (size) => {
   pageHeight.value = size.height;
+  console.log(size.height);
 };
 
 let skillsTextSize = ref(14);
@@ -135,7 +136,7 @@ let skillsTextSize = ref(14);
     :height="Math.max(pageHeight, $q.screen.height)"
     class=""
     :speed="1"
-    :src="getImageUrl('blurry-abstract.png')"
+    :src="getImageUrl('blurry-abstract.jpg')"
   >
     <div class="background-card medium-spacer-parent">
       <q-resize-observer @resize="onResize" />

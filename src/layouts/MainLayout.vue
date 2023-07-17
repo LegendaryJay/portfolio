@@ -56,7 +56,7 @@
 <script>
 import { reactive, ref } from 'vue';
 import HamburgerMenu from 'src/components/HamburgerMenu.vue';
-import backgroundUrl from 'src/assets/abstract-background.png';
+import backgroundUrl from 'src/assets/abstract-background.jpg';
 
 import { useQuasar } from 'quasar';
 import IndexPage from 'src/pages/IndexPage.vue';
