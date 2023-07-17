@@ -11,7 +11,56 @@ const recommendations = reactive([
   new Expando(
     'Rajesh',
     'Mentor at SSR Total IT',
-    'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.'
+    'I had the pleasure of working alongside Dan on a complex and demanding project, and I was continually impressed by his professionalism, dedication, and expertise. Dan consistently delivered high-quality work, even under tight deadlines and challenging circumstances. He has a keen eye for detail and an ability to think critically, which allowed him to identify and resolve potential issues before they became problems.',
+    `<html>
+      <p>June 21, 2023</p>
+      <p>
+        I had the pleasure of working alongside Dan on a complex and demanding
+        project, and I was continually impressed by his professionalism, dedication,
+        and expertise. Dan consistently delivered high-quality work, even under
+        tight deadlines and challenging circumstances. He has a keen eye for detail
+        and an ability to think critically, which allowed him to identify and
+        resolve potential issues before they became problems. Dan's strong technical
+        skills and ability to collaborate with team members made working with him a
+        seamless experience. He knows how to communicate effectively, listen to
+        others' ideas, and contribute constructively to discussions.
+      </p>
+
+      <strong>Skills:</strong>
+      <ul>
+        <li>
+          <strong>Problem-solving:</strong>
+          Dan is a skilled problem-solver who thrives in challenging situations. He
+          has a knack for identifying root causes and developing innovative
+          solutions to overcome obstacles.
+        </li>
+        <li>
+          <strong>Team Collaboration:</strong>
+          Dan is a valuable team player who excels in collaborating with colleagues
+          from diverse backgrounds. He actively contributes ideas, listens to
+          others' perspectives, and fosters a positive and inclusive team
+          environment.
+        </li>
+        <li>
+          <strong>Analytical Thinking:</strong>
+          Dan possesses strong analytical skills, allowing him to assess complex
+          situations, gather relevant data, and make informed decisions. He has the
+          ability to analyze information critically, identify patterns, and provide
+          insights that drive strategic decision-making.
+        </li>
+        <li>
+          <strong>Adaptability:</strong>
+          Dan is highly adaptable and thrives in dynamic work environments. He
+          quickly adjusts to new challenges, embraces change, and maintains a
+          positive attitude even in demanding situations.
+        </li>
+      </ul>
+
+      <p>
+        I wholeheartedly recommend Dan to any organization looking for a highly
+        skilled and reliable professional.
+      </p>
+    </html>`
   ),
   new Expando(
     'Nicki Kowalchuk',
@@ -21,22 +70,56 @@ const recommendations = reactive([
   new Expando(
     'Stacy Read',
     'WCTC Instructor',
-    'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.'
+    'Afer having Dan Chianese as a student in several of my programming classes (ranging from beginner- to advanced-level) I can confidently say that I believe Dan will succeed as a software developer based on how strongly he exhibits [determination, curiosity, Lateral thinking, and passion]. Because of his demonstrated creativity, determination, and hard work, I unreservedly recommend Dan as a valuable contributor to any development team.',
+    `<html>
+    <p>June 19, 2023</p>
+    <p>
+      When interviewing a software developer, or when working with a programming
+      student, I look for several qualities to indicate their aptitude for success
+      in this field:
+    </p>
+    <ul>
+      <li>
+        <strong>Determination</strong>: Is this person going to pursue a problem
+        to its solution, or will they give up and hand it over to someone else? I
+        want someone who personally embraces each challenge and owns it.
+      </li>
+      <li>
+        <strong>Curiosity</strong>: It's not enough that something works – they
+        want to know why it works. What makes one solution better than another?
+        Technology is always changing, so they keep one eye on the bigger picture.
+      </li>
+      <li>
+        <strong>Lateral thinking</strong>: Sometimes the best way to solve a
+        problem is to turn it into an entirely different problem. Does this person
+        exhibit radical creativity that can take us in new and better directions?
+      </li>
+      <li>
+        <strong>Passion</strong>: Are they working on personal projects to keep
+        their skills sharp and up to date? Software development is a field of
+        perpetual learning, and that should excite them!
+      </li>
+    </ul>
+    <p>
+      After having Dan Chianese as a student in several of my programming classes
+      (ranging from beginner- to advanced-level), I can confidently say that I
+      believe Dan will succeed as a software developer based on how strongly he
+      exhibits these qualities. Because of his demonstrated creativity,
+      determination, and hard work, I unreservedly recommend Dan as a valuable
+      contributor to any development team.
+    </p>
+    <p>Sincerely,</p>
+    <img
+      src="https://raw.githubusercontent.com/LegendaryJay/portfolio/72c3c33dc7c9409ed79300f0452347ad0c953f29/src/assets/recommendation/StacySignature.svg"
+      alt="Signature"
+      style="max-height: 4rem"
+    />
+    <p>Stacy Read</p>
+    <p>Senior Software Engineer, IVA'AL Solutions, LLC</p>
+    <p>Web and Software Instructor, Waukesha County Technical College</p>
+  </html>`
   ),
 ]);
-onMounted(async () => {
-  fetch('src/assets/recommendation/StacyReed.txt')
-    .then((response) => response.text())
-    .then((text) => {
-      recommendations[2].longDescription = text;
-    });
-
-  fetch('src/assets/recommendation/Rajesh.txt')
-    .then((response) => response.text())
-    .then((text) => {
-      recommendations[0].longDescription = text;
-    });
-});
 
 const $q = useQuasar();
 const pageHeight = ref($q.screen.height);
