@@ -27,39 +27,34 @@
       >
         <div class="spacer"></div>
         <q-list padding>
-          <q-item clickable v-ripple>
+          <q-item
+            clickable
+            v-ripple
+            :active="activePage == item.name.toLowerCase()"
+            @click="activePage = item.name.toLowerCase()"
+            v-for="item in drawerPageNames"
+            :key="item.name"
+          >
             <q-item-section avatar>
-              <q-icon name="home" />
+              <q-icon :name="item.icon" />
             </q-item-section>
-            <q-item-section> Home </q-item-section>
-          </q-item>
-
-          <q-item active clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="info" />
-            </q-item-section>
-            <q-item-section> About </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="work" />
-            </q-item-section>
-
-            <q-item-section> Portfolio </q-item-section>
+            <q-item-section> {{ item.name }} </q-item-section>
           </q-item>
         </q-list>
       </q-drawer>
 
       <q-page-container class="window-height">
-        <index-page />
+        <index-page
+          v-model="activePage"
+          @update-page-names="handlePageNamesUpdate"
+        />
       </q-page-container>
     </q-layout>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import HamburgerMenu from 'src/components/HamburgerMenu.vue';
 import backgroundUrl from 'src/assets/abstract-background.png';
 
@@ -76,10 +71,17 @@ export default {
     const $q = useQuasar();
     const showMode = ref(false);
     $q.dark.set(true);
+    let drawerPageNames = reactive([]);
+    const activePage = ref('home');
     return {
       showMode,
-
+      activePage,
       backgroundUrl,
+      drawerPageNames,
+      handlePageNamesUpdate(pageNames) {
+        drawerPageNames.length = 0;
+        drawerPageNames.push(...pageNames);
+      },
     };
   },
 };

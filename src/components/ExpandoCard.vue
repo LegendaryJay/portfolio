@@ -1,28 +1,27 @@
 <template>
-  <q-card flat class="medium-spacer-parent column">
-    <div class="row medium-spacer-child col-auto justify-between text-primary">
-      <div class="q-my-auto column text-primary">
-        <b class="text-large"> {{ item?.title }}</b>
-        <i class="text-medium" v-if="!!item?.subtitle">
-          {{ item.subtitle }}
-        </i>
-      </div>
-
-      <q-btn
-        rounded
-        outline
-        :label="item.iconLabel"
-        :icon-right="item.longDescriptionIcon"
-        padding="xs md"
-        class="q-my-auto"
-        size="sm"
-        @click="openModal"
-        v-if="item?.longDescription ?? false"
-      />
-    </div>
-
-    <div class="column medium-spacer-child col">
-      <div class="text-medium">“{{ item.description }}”</div>
+  <q-card flat class="column">
+    <q-item>
+      <q-item-section>
+        <q-item-label>{{ item.title }}</q-item-label>
+        <q-item-label caption>{{ item.subtitle }}</q-item-label>
+      </q-item-section>
+      <q-item-section avatar>
+        <q-btn
+          rounded
+          outline
+          :label="item.iconLabel"
+          :icon-right="item.longDescriptionIcon"
+          padding="xs md"
+          class="q-my-auto"
+          size="sm"
+          @click="openModal"
+          v-if="item?.longDescription ?? false"
+        />
+      </q-item-section>
+    </q-item>
+    <q-separator></q-separator>
+    <div class="column q-px-md q-py-sm col">
+      <div class="text- small">{{ item.description }}</div>
     </div>
   </q-card>
   <q-dialog v-model="isOpen" full-height @click="closeModal">
@@ -52,7 +51,7 @@
             v-html="item.longDescription"
           ></div>
         </q-scroll-area>
-        <div v-if="!isBig" class="text-medium">“{{ item.description }}”</div>
+        <div v-if="!isBig" class="text-medium">{{ item.description }}</div>
       </div>
     </q-card>
   </q-dialog>
@@ -112,7 +111,7 @@ export default {
   }
 }
 .big-rec-card {
-  width: min(100%, 700px);
+  width: min(100%, 750px);
 }
 .hide-while-animating--false {
   visibility: visible;

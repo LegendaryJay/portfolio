@@ -41,7 +41,7 @@
           href="https://www.linkedin.com/in/dan-chianese-244b16122/"
           target="_blank"
         />
-        <b class="title-text q-ml-md">LinkedIn:</b>
+        <b class="title-text q-ml-md">LinkedIn</b>
         https://www.linkedin.com/in/dan-chianese-244b16122
       </span>
       <span>
@@ -93,8 +93,8 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
 }
 
 .title-text {
-  font-weight: 900;
-  font-size: 0.8rem;
+  font-weight: bold;
+  font-size: 0.9rem;
   color: $primary;
   text-transform: uppercase;
 }

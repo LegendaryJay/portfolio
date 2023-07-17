@@ -1,10 +1,42 @@
 <script setup>
 import { getImageUrl } from 'src/scripts/ImageFromUrl';
+import { ref } from 'vue';
+const showLinks = ref(false);
+const links = [
+  {
+    title: 'Phone',
+    subtitle: '262.349.0843',
+    icon: 'phone',
+    type: 'a',
+    href: 'tel:12623490843',
+  },
+  {
+    title: 'Email',
+    subtitle: 'amorecbellum@gmail.com',
+    icon: 'email',
+    type: 'a',
+    href: 'mailto:amorecbellum@gmail.com?subject=data backup',
+  },
+  {
+    title: 'LinkedIn',
+    subtitle: 'https://www.linkedin.com/in/dan-chianese-244b16122',
+    icon: 'fa-brands fa-linkedin',
+    href: 'https://www.linkedin.com/in/dan-chianese-244b16122/',
+    target: '_blank',
+  },
+  {
+    title: 'GitHub',
+    subtitle: 'https://github.com/LegendaryJay',
+    icon: 'fa-brands fa-github',
+    href: 'https://github.com/LegendaryJay',
+    target: '_blank',
+  },
+];
 </script>
 
 <template>
   <div class="home-background fit row flex-center">
-    <q-card flat class="id-card col-12 col-sm-7 column flex-center">
+    <q-card flat class="id-card col-12 col-sm-7 column">
       <q-card-section :horizontal="$q.screen.gt.md">
         <q-card-section class="col-4">
           <q-img
@@ -15,25 +47,17 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
             }"
             :src="getImageUrl('profile-picture.png')"
           />
+          <div class="row flex-center q-mt-md">
+            <q-btn
+              class="q-mx-auto"
+              icon="person"
+              rounded
+              outline
+              label="Contact Me"
+              @click="() => (showLinks = !showLinks)"
+            ></q-btn>
+          </div>
         </q-card-section>
-        <span class="social-links">
-          <q-btn
-            size="xs"
-            flat
-            fab-mini
-            icon="fa-brands fa-linkedin"
-            href="https://www.linkedin.com/in/dan-chianese-244b16122/"
-            target="_blank"
-          />
-          <q-btn
-            size="xs"
-            flat
-            fab-mini
-            icon="fa-brands fa-github"
-            href="https://github.com/LegendaryJay"
-            target="_blank"
-          />
-        </span>
         <q-card-section class="col-8 text-center q-my-auto">
           <div class="name-text">Hi, I'm Dan!</div>
           <div class="title-text text-uppercase">Web & Software Developer</div>
@@ -43,11 +67,45 @@ import { getImageUrl } from 'src/scripts/ImageFromUrl';
           </div>
         </q-card-section>
       </q-card-section>
+      <q-slide-transition>
+        <q-card-section class="contact-area column" v-if="showLinks">
+          <q-list>
+            <q-item v-for="link in links" :key="link.title">
+              <q-item-section avatar clickable>
+                <q-btn
+                  color="accent"
+                  size="md"
+                  outline
+                  rounded
+                  :icon="link?.icon"
+                  :href="link?.href"
+                  :target="link?.target"
+                  :type="link?.type"
+                />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ link.title }}</q-item-label>
+                <q-separator vertical />
+                <q-item-label caption>{{ link.subtitle }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+      </q-slide-transition>
     </q-card>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.contact-title-text {
+  color: $primary;
+
+  margin-right: 5px;
+}
+.contact-area {
+  background: $dark;
+}
+
 .home-background {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
