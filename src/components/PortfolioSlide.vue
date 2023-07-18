@@ -80,7 +80,7 @@ const projects = reactive([
     </dl>`,
     'info',
     'commentary',
-    'PortfolioPage.png',
+    'PortfolioPage.jpg',
     [
       {
         title: 'Code',
