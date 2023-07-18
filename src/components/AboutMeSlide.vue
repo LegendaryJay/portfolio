@@ -125,7 +125,6 @@ const $q = useQuasar();
 const pageHeight = ref($q.screen.height);
 const onResize = (size) => {
   pageHeight.value = size.height;
-  console.log(size.height);
 };
 
 let skillsTextSize = ref(14);
@@ -134,7 +133,7 @@ let skillsTextSize = ref(14);
 <template>
   <q-parallax
     :height="Math.max(pageHeight, $q.screen.height)"
-    class=""
+    class="bg-black"
     :speed="1"
     :src="getImageUrl('blurry-abstract.jpg')"
   >
