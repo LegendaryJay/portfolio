@@ -14,7 +14,7 @@
   </q-scroll-area>
 </template>
 <script setup>
-import { ref, onMounted, watch, defineProps, defineEmits, reactive } from 'vue';
+import { ref, onMounted, watch, defineProps, defineEmits } from 'vue';
 import AboutMeSlide from 'src/components/AboutMeSlide.vue';
 import HomeSlide from 'src/components/HomeSlide.vue';
 import PortfolioSlide from 'src/components/PortfolioSlide.vue';
