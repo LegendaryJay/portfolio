@@ -3,7 +3,7 @@
     <div class="id-area text-center col-12 col-md-auto q-px-lg q-py-md">
       <q-img
         class="profile-picture q-mx-auto q-my-sm"
-        :src="getImageUrl('profile-picture.png')"
+        :src="getImageUrl('profile-picture.jpg')"
       />
 
       <div class="name-text">Dan Chianese</div>
