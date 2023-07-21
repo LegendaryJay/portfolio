@@ -246,7 +246,7 @@ const projects = reactive([
     ]
   ),
   new Expando(
-    'Javascript Timer Final Project',
+    'Pomme Pomodoro Web App',
     'Vue 3 (with Quasar plugin),HTML/CSS/JS, Pinia, Firebase (nosql)',
     "This was an app that was supposed to help a user manage their time in order to be more productive. I've included this because I am particularly proud of the design of the code itself rather than the actual website.",
     `    <dl>
@@ -345,7 +345,7 @@ const projects = reactive([
     `,
     'info',
     'commentary',
-    '',
+    'Pomme-adoroWireframe.jpg',
     [
       {
         title: 'Wireframe',

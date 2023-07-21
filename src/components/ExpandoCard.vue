@@ -24,7 +24,7 @@
     <q-img
       v-if="!!item.img"
       fit="contain"
-      style="width: 92%"
+      style="width: 92%; max-height: 275px"
       class="q-my-sm q-mx-auto"
       :src="getImageUrl(item.img)"
     />
