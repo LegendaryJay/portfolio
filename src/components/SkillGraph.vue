@@ -33,7 +33,6 @@
 
 <script setup>
 import { skillLegend } from 'src/scripts/SkillLevels';
-import { defineProps } from 'vue';
 
 const tempData = {
   'HTML/CSS/JS': 4,

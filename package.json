@@ -10,24 +10,14 @@
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "deploy": "quasar build && push-dir --dir=dist/spa --remote=gh-pages --branch=gh-pages",
+    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=gh-pages",
     "build": "quasar build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/vue-fontawesome": "^3.0.3",
     "@quasar/extras": "^1.0.0",
-    "apexcharts": "^3.41.0",
-    "push-dir": "^0.4.1",
     "quasar": "^2.12.0",
-    "scroll-into-view-if-needed": "^3.0.10",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
-    "vue3-apexcharts": "^1.4.1",
-    "yarn": "^1.22.19"
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",
