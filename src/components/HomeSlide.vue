@@ -36,7 +36,11 @@ const links = [
 
 <template>
   <div class="home-background fit row flex-center">
-    <q-card flat class="id-card col-12 col-sm-7 column">
+    <q-card
+      flat
+      class="id-card col-12 col-sm-7 column"
+      style="overflow: hidden"
+    >
       <q-card-section :horizontal="$q.screen.gt.md">
         <q-card-section class="col-4">
           <q-img
@@ -44,16 +48,6 @@ const links = [
             fit="cover"
             :src="getImageUrl('profile-picture.jpg')"
           />
-          <div class="row flex-center q-mt-md">
-            <q-btn
-              class="q-mx-auto"
-              icon="person"
-              rounded
-              outline
-              label="Contact Me"
-              @click="() => (showLinks = !showLinks)"
-            ></q-btn>
-          </div>
         </q-card-section>
         <q-card-section class="col-8 text-center q-my-auto">
           <div class="name-text">Hi, I'm Dan!</div>
@@ -64,6 +58,27 @@ const links = [
           </div>
         </q-card-section>
       </q-card-section>
+
+      <q-btn
+        class="full-width"
+        :class="'contact-button' + (showLinks ? '--open' : '--closed')"
+        flat
+        @click="() => (showLinks = !showLinks)"
+      >
+        <div class="row full-width">
+          <q-icon
+            class="col-auto"
+            :name="showLinks ? 'expand_less' : 'expand_more'"
+          />
+          <div class="col">
+            <q-icon class="q-mx-sm" name="person" />Contact Me
+          </div>
+          <q-icon
+            class="col-auto"
+            :name="showLinks ? 'expand_less' : 'expand_more'"
+          />
+        </div>
+      </q-btn>
       <q-slide-transition>
         <q-card-section class="contact-area column" v-if="showLinks">
           <q-list>
@@ -94,6 +109,14 @@ const links = [
 </template>
 
 <style lang="scss" scoped>
+.contact-button--closed {
+  background: $dark;
+  color: white;
+}
+.contact-button--open {
+  background: lighten($dark, 50);
+  color: $dark;
+}
 .contact-title-text {
   color: $primary;
 
