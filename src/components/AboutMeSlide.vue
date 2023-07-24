@@ -234,13 +234,15 @@ let skillsTextSize = ref(14);
                     <div class="col-12"><i>SSR Total It </i></div>
                   </div>
                 </div>
-                <div class="subsection-title">Hobby</div>
-                <div class="q-px-md row subsection-text">
-                  <div class="col-auto"><b>Server Admin</b></div>
-                  <div class="dot col"></div>
-                  <div class="col-auto">3+ years</div>
-                  <div class="col-12">
-                    <i>Centos Hosted Personal Server </i>
+                <div class="q-ml-md row-inline">
+                  <div class="subsection-title">Hobby</div>
+                  <div class="q-px-md row subsection-text">
+                    <div class="col-auto"><b>Server Admin</b></div>
+                    <div class="dot col"></div>
+                    <div class="col-auto">3+ years</div>
+                    <div class="col-12">
+                      <i>Centos Hosted Personal Server </i>
+                    </div>
                   </div>
                 </div>
               </q-card-section>
