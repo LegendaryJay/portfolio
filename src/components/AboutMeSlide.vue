@@ -234,8 +234,9 @@ let skillsTextSize = ref(14);
                     <div class="col-12"><i>SSR Total It </i></div>
                   </div>
                 </div>
+
+                <div class="subsection-title q-pt-md">Hobby</div>
                 <div class="q-ml-md row-inline">
-                  <div class="subsection-title">Hobby</div>
                   <div class="q-px-md row subsection-text">
                     <div class="col-auto"><b>Server Admin</b></div>
                     <div class="dot col"></div>
@@ -250,19 +251,17 @@ let skillsTextSize = ref(14);
           </div>
         </div>
         <div class="col-12 col-lg-4 medium-spacer-child">
-          <q-card flat class="about-me-card">
+          <q-card flat class="about-me-card fit column">
             <q-card-section class="item-title">
               Recommendations
             </q-card-section>
             <q-separator></q-separator>
             <div
-              :class="
-                'medium-spacer-parent ' +
-                ($q.screen.lt.sm || $q.screen.gt.md ? 'column' : 'row no-wrap')
-              "
+              class="medium-spacer-parent col"
+              :class="$q.screen.gt.md ? 'column' : 'row'"
             >
               <div
-                class="col medium-spacer-child"
+                class="col-xs-12 col-md medium-spacer-child flex"
                 v-for="(rec, key) in recommendations"
                 :key="key"
               >

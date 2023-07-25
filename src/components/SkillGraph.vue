@@ -36,12 +36,14 @@ import { skillLegend } from 'src/scripts/SkillLevels';
 
 const tempData = {
   'HTML/CSS/JS': 4,
+  'Relational Databases': 3,
+  'Linux CLIs': 3,
   Java: 4.5,
   'C#': 4.5,
   'Balsamiq Wireframing': 4,
-  'Vue.js': 3.5,
+  'Vue.js': 4,
   typescript: 3.5,
-  Python: 3.5,
+  Python: 3,
   Git: 3,
   Angular: 3,
   'React.js': 3,
