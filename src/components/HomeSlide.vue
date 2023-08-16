@@ -105,10 +105,32 @@ const links = [
         </q-card-section>
       </q-slide-transition>
     </q-card>
+    <div flat class="main-circle">▼ Scroll Down ▼</div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+
+.main-circle {
+  color: $secondary;
+  position: fixed;
+  bottom: 0px;
+  margin: 10px;
+  font-size: 12px;
+  z-index: -1;
+  font-weight: 100;
+  animation: pulse 2s ease-in-out  alternate infinite;
+}
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(1) translateY(0)
+  }
+  90% {
+    transform: scale(0.94) translateY(5px)
+  }
+}
+
+
 .contact-button--closed {
   background: $dark;
   color: white;
