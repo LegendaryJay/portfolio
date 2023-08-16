@@ -12,10 +12,10 @@ const links = [
   },
   {
     title: 'Email',
-    subtitle: 'amorecbellum@gmail.com',
+    subtitle: 'dan.chianese@tugbox.net',
     icon: 'email',
     type: 'a',
-    href: 'mailto:amorecbellum@gmail.com?subject=data backup',
+    href: 'mailto:dan.chianese@tugbox.net',
   },
   {
     title: 'LinkedIn',

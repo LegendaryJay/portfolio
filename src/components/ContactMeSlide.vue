@@ -28,9 +28,9 @@
           size="xs"
           icon="email"
           type="a"
-          href="mailto:amorecbellum@gmail.com?subject=data backup"
+          href="mailto:dan.chianese@tugbox.net"
         />
-        <b class="title-text q-ml-md">Email</b> amorecbellum@gmail.com
+        <b class="title-text q-ml-md">Email</b> dan.chianese@tugbox.net
       </span>
       <span>
         <q-btn

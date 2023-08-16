@@ -1,9 +1,9 @@
 {
   "name": "portfolio",
   "version": "0.0.1",
-  "description": "A portfolio of my work",
-  "productName": "TugPortfolio",
-  "author": "Tug Chianese <amorecbellum@gmail.com>",
+  "description": "The portfolio of Dan Chianese",
+  "productName": "Tug's Portfolio",
+  "author": "Tug Chianese <dan.chianese@tugbox.net>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
