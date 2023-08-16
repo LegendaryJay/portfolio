@@ -273,6 +273,7 @@ let skillsTextSize = ref(14);
       </div>
     </div>
   </q-parallax>
+
 </template>
 
 <style lang="scss" scoped>
