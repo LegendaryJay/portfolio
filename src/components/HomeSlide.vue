@@ -151,7 +151,7 @@ const links = [
 .home-background {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .id-card {

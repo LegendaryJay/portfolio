@@ -341,7 +341,7 @@ const projects = reactive([
 .portfolio-background {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
-  min-height: 100vh;
+  min-height: 100svh;
 }
 .slide-title {
   color: white;
@@ -369,6 +369,5 @@ const projects = reactive([
 .background-card {
   background-color: rgba(black, 0.5);
   backdrop-filter: blur(20px);
-  //min-height: 100vh)
 }
 </style>
