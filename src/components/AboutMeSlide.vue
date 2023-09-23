@@ -237,7 +237,7 @@ let skillsTextSize = ref(14);
 
                 <div class="subsection-title q-pt-md">Hobby</div>
                 <div class="q-ml-md row-inline">
-                  <div class="q-px-md row subsection-text">
+                  <div class="row subsection-text">
                     <div class="col-auto"><b>Server Admin</b></div>
                     <div class="dot col"></div>
                     <div class="col-auto">3+ years</div>
