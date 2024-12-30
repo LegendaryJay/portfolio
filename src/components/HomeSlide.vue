@@ -5,10 +5,10 @@ const showLinks = ref(false);
 const links = [
   {
     title: 'Phone',
-    subtitle: '262.349.0843',
+    subtitle: '672.999.7011',
     icon: 'phone',
     type: 'a',
-    href: 'tel:12623490843',
+    href: 'tel:16729997011',
   },
   {
     title: 'Email',
@@ -110,7 +110,6 @@ const links = [
 </template>
 
 <style lang="scss" scoped>
-
 .main-circle {
   color: $secondary;
   position: fixed;
@@ -119,17 +118,18 @@ const links = [
   font-size: 12px;
   z-index: -1;
   font-weight: 100;
-  animation: pulse 2s ease-in-out  alternate infinite;
+  animation: pulse 2s ease-in-out alternate infinite;
 }
 @keyframes pulse {
-  0%, 80%, 100% {
-    transform: scale(1) translateY(0)
+  0%,
+  80%,
+  100% {
+    transform: scale(1) translateY(0);
   }
   90% {
-    transform: scale(0.94) translateY(5px)
+    transform: scale(0.94) translateY(5px);
   }
 }
-
 
 .contact-button--closed {
   background: $dark;

@@ -178,7 +178,7 @@ const projects = reactive([
       {
         title: 'Wireframe',
         icon: 'architecture',
-        href: 'https://balsamiq.cloud/si4kiz6/pjr87ro/rC802?f=N4IgUiBcCMA0IDkpxAYWfAMhkAhHAsjgFpQAM8A0lANqgBOUI0AbACxsgC%2BsDTAggFYAzADFuvEI0ghBglgCYJfGQBEAorjLKpTAJxtUqndOZlBSnitnq9%2FE0wDs0QZy4BdLkA%3D%3D',
+        href: 'https://postimg.cc/gallery/kGp37T2',
         target: '_blank',
       },
     ]
@@ -275,7 +275,7 @@ const projects = reactive([
       {
         title: 'Wireframe',
         icon: 'architecture',
-        href: 'https://balsamiq.cloud/si4kiz6/p7vg6g1',
+        href: 'https://postimg.cc/gallery/7ZNGXzd',
         target: '_blank',
       },
       {
